@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  core-db:
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./core-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=core
+      - POSTGRES_DB=core
