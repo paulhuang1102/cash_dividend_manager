@@ -1,6 +1,8 @@
+const Bots = [];
+
 class Bot {
-  constructor(tag) {
-    this.tag = tag;
+  constructor() {
+    Bots.push(this);
   }
 
   init() {
@@ -13,6 +15,17 @@ class Bot {
 
   ready() {
     console.log(`${this.tag} Bot Ready`);
+  }
+
+  start() {
+    return Promise.resolve(true);
+  }
+
+
+  static getBot(tag) {
+    const condition = new RegExp(`^${tag}$`, 'i');
+    const bot = Bots.find((b) => condition.test(b.tag));
+    return Promise.resolve(bot);
   }
 }
 

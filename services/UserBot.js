@@ -3,8 +3,9 @@ const Bot = require("./Bot");
 class UserBot extends Bot {
   db;
   constructor(db, tag) {
-    super("User");
+    super();
     this.db = db;
+    this.tag = 'User';
   }
 
   async init() {

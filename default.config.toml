@@ -1,0 +1,24 @@
+[base]
+folder = ""
+static = ""
+domain = ""
+sessionKey = ""
+
+[jwt]
+secret = ""
+
+[mailer]
+host = ''
+secure = true
+port = 465
+user = ''
+password = ''
+
+
+[api]
+pathname = [
+  "get | /,/version | Static.Utils.readPackageInfo",
+
+  # user
+  "get | /user/list | Bot.User.GetUserList",
+]
