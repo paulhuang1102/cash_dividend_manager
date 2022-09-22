@@ -2,7 +2,7 @@ const Bot = require("./Bot");
 
 class UserBot extends Bot {
   db;
-  constructor(db, tag) {
+  constructor({ db, config}) {
     super();
     this.db = db;
     this.tag = 'User';
@@ -49,6 +49,13 @@ class UserBot extends Bot {
     `;
 
     const res = await this.db.query(query, [id]);
+  }
+
+  async GetUserList(req) {
+
+    return new Promise((resolve, reject) => {
+      resolve('success');
+    })
   }
 }
 

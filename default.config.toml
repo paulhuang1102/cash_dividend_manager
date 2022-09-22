@@ -17,7 +17,8 @@ password = ''
 
 [api]
 pathname = [
-  "get | /,/version | Static.Utils.readPackageInfo",
+  "get | /,/version | Static.Tool.readPackageInfo",
+  "get | /now | Static.Tool.getDateTime",
 
   # user
   "get | /user/list | Bot.User.GetUserList",

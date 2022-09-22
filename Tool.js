@@ -3,7 +3,7 @@ const path = require("path");
 const os = require("os");
 const toml = require("toml");
 
-class Config {
+class Tool {
   static readFile(filePath, config = {}) {
     return new Promise((resolve, reject) => {
       fs.readFile(filePath, config, (err, data) => {
@@ -20,7 +20,7 @@ class Config {
     return this.readFile(filePath).then((data) => JSON.parse(data));
   }
 
-  static readPackageinfo() {
+  static readPackageInfo() {
     const filePath = path.resolve(__dirname, "./package.json");
 
     return this.readJson(filePath);
@@ -35,10 +35,9 @@ class Config {
   }
 
   static async readConfig(filePath) {
-    console.log(filePath);
     let defaultCFG;
     let config;
-    const packageInfo = await this.readPackageinfo();
+    const packageInfo = await this.readPackageInfo();
     const basePath = path.resolve(os.homedir(), packageInfo.name);
     const fileExists = await this.fileExists(filePath);
 
@@ -48,7 +47,7 @@ class Config {
     try {
       defaultCFG = toml.parse(defaultCFGTOML);
     } catch (e) {
-      console.log(e)
+      console.log(e);
 
       return Promise.reject(new Error(`Invalid config file: ${defaultCFGP}`));
     }
@@ -75,6 +74,10 @@ class Config {
       : basePath;
     return Promise.resolve(config);
   }
+
+  static getDateTime() {
+    return Date.now();
+  }
 }
 
-module.exports = Config;
+module.exports = Tool;
